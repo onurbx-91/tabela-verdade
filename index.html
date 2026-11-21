@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tabela Verdade</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Tabela Verdade</h1>
+    <nav>
+      <button class="tab active" data-tab="pratica">Prática</button>
+      <button class="tab" data-tab="consulta">Consulta</button>
+      <button class="tab" data-tab="placar">Placar</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PRÁTICA -->
+    <section id="pratica" class="view">
+      <div class="controls">
+        <label>Variáveis
+          <select id="nVars">
+            <option value="2">2 (p, q)</option>
+            <option value="3" selected>3 (p, q, r)</option>
+          </select>
+        </label>
+        <label>Dificuldade
+          <select id="depth">
+            <option value="2">Fácil</option>
+            <option value="3" selected>Médio</option>
+            <option value="4">Difícil</option>
+          </select>
+        </label>
+        <button id="novaExpr">Nova expressão</button>
+      </div>
+
+      <p class="expr-box">Expressão: <strong id="exprPratica">—</strong></p>
+
+      <div class="table-wrap">
+        <table id="tabPratica"></table>
+      </div>
+
+      <div class="actions">
+        <button id="verificar" class="primary">Verificar</button>
+        <p id="feedback" class="feedback"></p>
+      </div>
+    </section>
+
+    <!-- CONSULTA -->
+    <section id="consulta" class="view hidden">
+      <div class="input-row">
+        <input id="entrada" type="text" placeholder="ex: (p ∧ q) → ¬r" autocomplete="off" spellcheck="false">
+        <button id="calcular" class="primary">Calcular</button>
+      </div>
+
+      <div class="symbols">
+        <button data-sym="¬">¬</button>
+        <button data-sym="∧">∧</button>
+        <button data-sym="∨">∨</button>
+        <button data-sym="→">→</button>
+        <button data-sym="↔">↔</button>
+        <button data-sym="(">(</button>
+        <button data-sym=")">)</button>
+      </div>
+
+      <div class="examples">
+        <span>Exemplos:</span>
+        <button class="ex" data-ex="p → q">p → q</button>
+        <button class="ex" data-ex="(p ∧ q) ∨ ¬r">(p ∧ q) ∨ ¬r</button>
+        <button class="ex" data-ex="p ↔ (q → r)">p ↔ (q → r)</button>
+        <button class="ex" data-ex="(p ∨ ¬p)">(p ∨ ¬p)</button>
+      </div>
+
+      <p class="hint">
+        Atalhos: <code>~</code> para ¬, <code>&amp;</code> para ∧, <code>|</code> para ∨,
+        <code>-&gt;</code> para →, <code>&lt;-&gt;</code> para ↔. Use letras como variáveis.
+      </p>
+
+      <p id="erro" class="error"></p>
+      <p id="resumo" class="resumo"></p>
+
+      <div class="table-wrap">
+        <table id="tabConsulta"></table>
+      </div>
+    </section>
+
+    <!-- PLACAR -->
+    <section id="placar" class="view hidden">
+      <div class="stats">
+        <div><span id="stAcertos">0</span><small>acertos</small></div>
+        <div><span id="stTotal">0</span><small>respostas</small></div>
+        <div><span id="stPct">0%</span><small>aproveitamento</small></div>
+      </div>
+      <button id="zerar">Zerar placar</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
